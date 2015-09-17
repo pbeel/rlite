@@ -56,10 +56,12 @@ function Rlite() {
   }
 
   return {
+    getRoutes: function() {
+      return routes;
+    },
     add: function(route, handler) {
       var pieces = route.toLowerCase().split('/'),
           rules = routes;
-
       for (var i = 0; i < pieces.length; ++i) {
         var piece = pieces[i],
             name = piece[0] == ':' ? ':' : piece;
@@ -78,8 +80,11 @@ function Rlite() {
 
     lookup: lookup,
 
-    run: function(url) {
+    run: function(url, data) {
       var result = lookup(url);
+      if(data){
+        result.params.dataParams = data
+      }
 
       result.cb && result.cb({
         url: url,
@@ -95,7 +100,7 @@ function Rlite() {
   var define = root.define;
 
   if (define && define.amd) {
-    define([], factory);
+    define('Rlite', [], factory);
   } else if (typeof module !== 'undefined' && module.exports) {
     module.exports = factory();
   }
