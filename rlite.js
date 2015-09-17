@@ -95,7 +95,7 @@ function Rlite() {
   var define = root.define;
 
   if (define && define.amd) {
-    define([], factory);
+    define('Rlite', [], factory);
   } else if (typeof module !== 'undefined' && module.exports) {
     module.exports = factory();
   }
