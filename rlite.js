@@ -56,10 +56,12 @@ function Rlite() {
   }
 
   return {
+    getRoutes: function() {
+      return routes;
+    },
     add: function(route, handler) {
       var pieces = route.toLowerCase().split('/'),
           rules = routes;
-
       for (var i = 0; i < pieces.length; ++i) {
         var piece = pieces[i],
             name = piece[0] == ':' ? ':' : piece;
