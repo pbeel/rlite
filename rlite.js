@@ -1,7 +1,8 @@
-// This library started as an experiment to see how small I could make
-// a functional router. It has since been optimized (and thus grown).
-// The redundancy and inelegance here is for the sake of either size
-// or speed.
+/**
+ * Rlite router
+ * license MIT (c) 2015 Chris Davies
+ * https://github.com/pbeel/rlite
+ */
 function Rlite() {
   var routes = {},
       decode = decodeURIComponent;
